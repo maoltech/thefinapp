@@ -10,35 +10,35 @@ namespace User.Entities
 
         [Required]
         [StringLength(50)]
-        public string FirstName { get; init; }
+        public string? FirstName { get; init; }
 
         [Required]
         [StringLength(50)]
-        public string LastName { get; init; }
+        public string? LastName { get; init; }
 
         [Required]
         [EmailAddress]
-        public string Email { get; init; }
+        public string? Email { get; init; }
 
         [Required]
         [StringLength(100, MinimumLength = 8)]
-        public string Password { get; init; }
+        public string? Password { get; init; }
 
         [NotMapped]
         [Compare("Password")] 
-        public string ConfirmPassword { get; init; }
+        public string? ConfirmPassword { get; init; }
 
         [Required]
         [StringLength(10)]
-        public string Phone { get; init; }
+        public string? Phone { get; init; }
 
         [Required]
         [StringLength(100)]
-        public string Address { get; init; }
+        public string? Address { get; init; }
 
         public decimal Balance { get; init; }
 
-        public string BVN {get; init;}
+        public string? BVN {get; init;}
         public DateTimeOffset DOB {get; init;}
         public DateTimeOffset CreateDate {get; init;}
 
