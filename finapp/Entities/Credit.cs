@@ -14,7 +14,7 @@ namespace Credits.Entities
 
         [Required]
         [StringLength(50)]
-        public string? initializeStatus { get; init; }
+        public Boolean? initializeStatus { get; init; }
 
         [Required]
         [StringLength(50)]
@@ -41,7 +41,7 @@ namespace Credits.Entities
         [Required]
         [StringLength(100)]
         public string? bankName { get; init; }
-        
+
         [Required]
         [StringLength(100)]
         public string? accountNumber { get; init; }
