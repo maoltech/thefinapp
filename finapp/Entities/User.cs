@@ -6,7 +6,7 @@ namespace User.Entities
     public class User
     {
         [Key]
-        public int Id { get; init; }
+        public Guid Id { get; init; }
 
         [Required]
         [StringLength(50)]
@@ -39,6 +39,8 @@ namespace User.Entities
         public decimal Balance { get; init; }
 
         public string? BVN {get; init;}
+
+
         public DateTimeOffset DOB {get; init;}
         public DateTimeOffset CreateDate {get; init;}
 
