@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using Credits.Entities;
+
 namespace Credits.Repositories
 {
     public class InMemCreditsRepository
