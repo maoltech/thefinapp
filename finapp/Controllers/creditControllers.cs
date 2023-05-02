@@ -8,10 +8,10 @@ namespace User.Controllers
     [Route("credit")]
     public class CreditController : ControllerBase
     {
-        private readonly InMemCreditsRepository repository; 
+        private readonly IInMemCreditsRepository repository; 
 
-        public CreditController(){
-          repository = new InMemCreditsRepository();
+        public CreditController(IInMemCreditsRepository repository){
+          this.repository = repository;
         }
 
         [HttpGet]
@@ -21,9 +21,13 @@ namespace User.Controllers
             return Credit;
         }  
 
-        [HttpGet("{creditid}")]
-        public Credit GetCredit( Guid CreditId){
+        [HttpGet("{creditId}")]
+        public ActionResult<Credit> GetCredit( Guid CreditId){
             var Credit = repository.GetCredit(CreditId);
+
+            if (Credit is null){
+                return NotFound();
+            }
             return Credit;
         }
     }

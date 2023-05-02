@@ -4,9 +4,9 @@ using Credits.Entities;
 
 namespace Credits.Repositories
 {
-    public class InMemCreditsRepository
+    public class InMemCreditsRepository : IInMemCreditsRepository
     {
-        private readonly List<Credit>  credits = new()
+        private readonly List<Credit> credits = new()
         {
             new  Credit { CreditId = Guid.NewGuid(), initializeStatus = true, Status = "success"},
             new  Credit { CreditId = Guid.NewGuid(), initializeStatus = true, Status = "failed"}
@@ -19,8 +19,8 @@ namespace Credits.Repositories
 
         public Credit GetCredit(Guid CreditId)
         {
-            return  credits.Where( data => data.CreditId == CreditId).SingleOrDefault();
+            return credits.Where(data => data.CreditId == CreditId).SingleOrDefault();
         }
- 
+
     }
 }
