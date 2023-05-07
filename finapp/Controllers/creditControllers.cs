@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Credits.Repositories;
 using Credits.Entities;
+using Credits.Dtos;
+using Credits;
 namespace User.Controllers
 {
 
@@ -15,20 +17,20 @@ namespace User.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Credit> GetCredits()
+        public IEnumerable<CreditDto> GetCredits()
         {
-            var Credit = repository.GetCredits();
+            var Credit = repository.GetCredits().Select( data => data.AsDto() );
             return Credit;
         }  
 
         [HttpGet("{creditId}")]
-        public ActionResult<Credit> GetCredit( Guid CreditId){
+        public ActionResult<CreditDto> GetCredit( Guid CreditId){
             var Credit = repository.GetCredit(CreditId);
 
             if (Credit is null){
                 return NotFound();
             }
-            return Credit;
+            return Credit.AsDto();
         }
     }
 }
