@@ -6,5 +6,7 @@ namespace Credits.Repositories{
     {
         Credit GetCredit(Guid CreditId);
         IEnumerable<Credit> GetCredits();
+
+        void CreateCredit(Credit data); 
     }
 }

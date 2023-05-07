@@ -22,5 +22,10 @@ namespace Credits.Repositories
             return credits.Where(data => data.CreditId == CreditId).SingleOrDefault();
         }
 
+        public void CreateCredit(Credit data)
+        {
+            credits.Add(data);
+        }
+
     }
 }

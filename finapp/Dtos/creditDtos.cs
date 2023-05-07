@@ -2,7 +2,7 @@
 namespace Credits.Dtos
 {
     
-      public class CreditDto
+      public record CreditDto
     {
         public Guid CreditId { get; init; }
         public string? UserId { get; init; }
