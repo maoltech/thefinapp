@@ -1,5 +1,4 @@
 
-using System.Collections.Generic;
 using Credits.Entities;
 
 namespace Credits.Repositories
@@ -19,12 +18,24 @@ namespace Credits.Repositories
 
         public Credit GetCredit(Guid CreditId)
         {
-            return credits.Where(data => data.CreditId == CreditId).SingleOrDefault();
+            var info = credits.Where(data => data.CreditId == CreditId).SingleOrDefault();
+
+            if(info == null){
+                return info;
+            }
+             
+            return info;
         }
 
         public void CreateCredit(Credit data)
         {
             credits.Add(data);
+        }
+
+        public void UpdateCredit(Credit data)
+        {
+            var index = credits.FindIndex(info => info.CreditId == data.CreditId);
+            credits[index] = data;
         }
 
     }

@@ -8,5 +8,7 @@ namespace Credits.Repositories{
         IEnumerable<Credit> GetCredits();
 
         void CreateCredit(Credit data); 
+
+        void UpdateCredit(Credit data);
     }
 }

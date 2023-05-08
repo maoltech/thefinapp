@@ -33,7 +33,7 @@ namespace User.Controllers
             return Credit.AsDto();
         }
 
-        [HttpPost("/pay")]
+        [HttpPost("pay")]
         public ActionResult<CreditDto> CreateCredit(CreateCreditDto data)
         {
             Credit credit = new()
@@ -50,6 +50,27 @@ namespace User.Controllers
 
                 return CreatedAtAction(nameof(GetCredit), new {creditId = credit.CreditId}, credit.AsDto());
 
+        }
+
+
+        [HttpPost("update")]
+
+        public ActionResult UpdateCredit(Guid CreditId, UpdateCreditDto creditDto )
+        {
+                var existingCredit = repository.GetCredit(CreditId);
+
+                if(existingCredit is null){
+                    return NotFound();
+                };
+
+                Credit updatedCredit = existingCredit with{
+                    amount = creditDto.amount,
+                    accountName = creditDto.accountName
+                };
+
+                repository.UpdateCredit(updatedCredit);
+
+                return NoContent();         
         }
     }
 }
