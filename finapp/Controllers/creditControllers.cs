@@ -32,5 +32,24 @@ namespace User.Controllers
             }
             return Credit.AsDto();
         }
+
+        [HttpPost("/pay")]
+        public ActionResult<CreditDto> CreateCredit(CreateCreditDto data)
+        {
+            Credit credit = new()
+            {
+                CreditId = Guid.NewGuid(),
+                amount = data.amount,
+                Phone = data.Phone,
+                accountName = data.accountName,
+                accountNumber = data.accountNumber,
+                bankName = data.bankName
+            };
+            
+                repository.CreateCredit(credit);
+
+                return CreatedAtAction(nameof(GetCredit), new {creditId = credit.CreditId}, credit.AsDto());
+
+        }
     }
 }
